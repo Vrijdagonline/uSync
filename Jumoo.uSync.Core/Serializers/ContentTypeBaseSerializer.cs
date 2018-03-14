@@ -50,8 +50,9 @@ namespace Jumoo.uSync.Core.Serializers
             if (item.Alias != alias)
                 item.Alias = alias;
 
+            // Alleen updaten bij nieuwe DocumentTypes
             var name = info.Element("Name").ValueOrDefault(string.Empty);
-            if (!string.IsNullOrEmpty(name) )
+            if (string.IsNullOrEmpty(item.Name))
             {
                 item.Name = name;
             }
