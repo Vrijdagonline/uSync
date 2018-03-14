@@ -43,6 +43,7 @@ namespace Jumoo.uSync.Core.Serializers
             LogHelper.Debug<MacroSerializer>("<< DeserailizeCore Macro");
 
             IMacro item = null;
+            bool macroExists = false;
 
             // find by key. doesn't actully work at the moment
             //   -  beause entity does seem to return macros .
@@ -55,6 +56,9 @@ namespace Jumoo.uSync.Core.Serializers
                     if (entity != null)
                     {
                         item = _macroService.GetById(entity.Id);
+
+                        if (item != null)
+                            macroExists = true;
                     }
                 }
             }
@@ -89,7 +93,9 @@ namespace Jumoo.uSync.Core.Serializers
 
             LogHelper.Debug<MacroSerializer>("<<< DeserailizeCore - Defaults");
 
-            item.UseInEditor = node.Element("useInEditor").ValueOrDefault(false);
+            if (!macroExists)
+                item.UseInEditor = node.Element("useInEditor").ValueOrDefault(false);
+
             item.CacheDuration = node.Element("refreshRate").ValueOrDefault(0);
             item.CacheByMember = node.Element("cacheByMember").ValueOrDefault(false);
             item.CacheByPage = node.Element("cacheByPage").ValueOrDefault(false);

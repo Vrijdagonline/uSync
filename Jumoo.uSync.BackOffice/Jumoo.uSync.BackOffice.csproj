@@ -295,6 +295,7 @@
     <Compile Include="BackOffice.cs" />
     <Compile Include="Controllers\uSyncBackOfficeApiController.cs" />
     <Compile Include="Controllers\uSyncBackOfficeController.cs" />
+    <Compile Include="CustomHandlers\CreateOnlyDictionaryHandler.cs" />
     <Compile Include="Handlers\ContentTypeHandler.cs" />
     <Compile Include="Handlers\DataTypeHandler.cs" />
     <Compile Include="Handlers\Deploy\BaseDepoyHandler.cs" />
